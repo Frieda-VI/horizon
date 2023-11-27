@@ -45,6 +45,8 @@ end
 for _, Module in Modules:GetChildren do
     require(Module).init(World)
 end
+
+World:Loop() --> Will fire all `:Loop()` in systems
 ```
 `listing 0.1`
 
@@ -72,8 +74,8 @@ function Player.OnSignal(self)
     end)
 end
 
- -- fires on HeatBeat
-function Player.Loop(self) end
+ -- fires on HeatBeat, fires after :Loop() is called on World
+function Player.Loop(self, deltaTime) end
 
 -- fires when entity is destroyed or component is removed
 function Player.Destroy(self)
@@ -290,7 +292,7 @@ World:QueryWith(Component, Component2, Component3, ...)
 ```lua
 World:QueryWithout(Component, Component2, Component3, ...)
 ```
-`listing 3.1
+`listing 3.1`
 
 Both `listing 3.0` and `listing 3.1` returns a table. 
 

@@ -64,7 +64,11 @@ function Horizon:Clean()
 end
 
 function Horizon.newSystem()
-	return System
+	local newSystem = {}
+	for Index, Function in System do
+		newSystem[Index] = Function
+	end
+	return newSystem
 end
 
 function Horizon.newComponent(...)
