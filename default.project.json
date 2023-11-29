@@ -1,0 +1,12 @@
+{
+  "name": "horizon",
+  "tree": {
+    "$className": "DataModel",
+
+    "ReplicatedStorage": {
+      "Horizon": {
+        "$path": "Horizon"
+      }
+    }
+  }
+}
