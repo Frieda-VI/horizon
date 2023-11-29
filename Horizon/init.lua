@@ -90,6 +90,20 @@ function Horizon:RemoveEntity(ID)
 	self.Entities[ID] = nil
 end
 
+function Horizon:GetEntityFromInstance(instance)
+	assert(typeof(instance) == "Instance", "Instance is not valid.")
+	assert(Horizon.World, "World is not valid.")
+
+	self = if self == Horizon then Horizon.World else self
+
+	for ID, entity in self.Entities do
+		if entity.Instance == instance then
+			return { ID, entity }
+		end
+	end
+	return false
+end
+
 function Horizon:FindID(Entity)
 	assert(Horizon.World, "World is not valid.")
 
@@ -137,14 +151,16 @@ local function Query(with, ...)
 
 		return results.Get()
 	end
-	results.Get = function(_)
-		return {
-			iter = function(Function)
-				for _, Result in _entities do
-					Function(Result[1], Result[2])
-				end
-			end,
-		}
+	results.Get = function(isIter)
+		return if isIter
+			then {
+				iter = function(Function)
+					for _, Result in _entities do
+						Function(Result[1], Result[2])
+					end
+				end,
+			}
+			else _entities
 	end
 
 	return results

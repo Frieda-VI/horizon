@@ -17,7 +17,13 @@ end
 local function deep_copy(t)
 	local new_t = table.clone(t)
 	for i, v in new_t do
-		if type(v) == "table" then
+		if v ~= "table" then
+			continue
+		end
+
+		if typeof(v.IsA) == "function" and (v:IsA("Entity") or v:IsA("Component") or v:IsA("System")) then
+			new_t[i] = v --> shallow copy
+		else
 			new_t[i] = deep_copy(v)
 		end
 	end
