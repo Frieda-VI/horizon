@@ -1,0 +1,24 @@
+{
+  "name": "horizon",
+  "tree": {
+    "$className": "DataModel",
+
+    "ReplicatedStorage": {
+      "Horizon": {
+        "$path": "Horizon"
+      }
+    },
+    "ServerScriptService": {
+      "Server": {
+        "$path": "Example/Server"
+      }
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "Client": {
+          "$path": "Example/Client"
+        }
+      }
+    }
+  }
+}
