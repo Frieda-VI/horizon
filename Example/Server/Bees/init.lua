@@ -14,7 +14,7 @@ local Assets = ServerStorage:WaitForChild("Assets")
 local Bees = Assets:WaitForChild("Bees")
 
 --[[
-    Some of the fields have not been implemented and are left
+    Some of the fields have not been implemented and were left
     to the scripter to implement, as an exercise.
 ]]
 local Bee_Component = Component.new("Bee", {
